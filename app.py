@@ -6,9 +6,9 @@ import json
 with open("settings.json", "r") as f:
     config = json.load(f)
 
-API_KEY = config["IBM_API_KEY"]
-CHAT_ENDPOINT = config["CHAT_ENDPOINT"]
 TOKEN_URL = config["TOKEN_URL"]
+API_KEY = st.secrets["ibm"]["IBM_API_KEY"]
+CHAT_ENDPOINT = st.secrets["ibm"]["CHAT_ENDPOINT"]
 
 # Function to get Bearer token
 @st.cache_data(ttl=300)  # Cache for 5 minutes
