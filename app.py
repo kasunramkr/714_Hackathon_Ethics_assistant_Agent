@@ -43,7 +43,7 @@ def get_bot_response(message, token):
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 
-st.title("Ethics Assistant AI Agent")
+st.title("Human Ethics Assistant AI Agent")
 
 # Display chat history
 for message in st.session_state.chat_history:
