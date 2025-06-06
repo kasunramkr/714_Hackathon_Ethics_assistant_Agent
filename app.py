@@ -39,11 +39,14 @@ def get_bot_response(message, token):
     response.raise_for_status()
     return response.json()["choices"][0]["message"]["content"]
 
-# Initialize chat history in session_state
+# Initialize session state variables
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
+if "access_token" not in st.session_state:
+    st.session_state.access_token = get_bearer_token(API_KEY)
 
-st.title("Human Ethics Assistant AI Agent 🤖")
+# App title
+st.title("🤖 Human Ethics Assistant AI Agent")
 
 # Display chat history
 for message in st.session_state.chat_history:
@@ -63,10 +66,16 @@ if user_input:
         response_placeholder = st.empty()
         with st.spinner("Thinking..."):
             try:
-                token = get_bearer_token(API_KEY)
+                token = st.session_state.access_token
                 response = get_bot_response(user_input, token)
             except Exception as e:
                 response = f"Error: {str(e)}"
         response_placeholder.markdown(response)
-
     st.session_state.chat_history.append({"role": "assistant", "content": response})
+
+# Clear chat button
+if st.button("🧹 Clear Chat"):
+    st.session_state.chat_history = []
+    if "access_token" in st.session_state:
+        del st.session_state.access_token
+    st.rerun()
