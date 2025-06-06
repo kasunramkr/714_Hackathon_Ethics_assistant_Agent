@@ -46,7 +46,13 @@ if "access_token" not in st.session_state:
     st.session_state.access_token = get_bearer_token(API_KEY)
 
 # App title
-st.title("🤖 Human Ethics Assistant AI Agent")
+col1, col2 = st.columns([1, 8])  # Adjust width ratios as needed
+
+with col1:
+    st.image("ai_icon.png", width=90)  # Replace with your image file path
+
+with col2:
+    st.markdown("## Human Ethics Assistant AI Agent")
 
 # Display chat history
 for message in st.session_state.chat_history:
