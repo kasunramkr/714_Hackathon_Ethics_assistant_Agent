@@ -79,3 +79,10 @@ if st.button("🧹 Clear Chat"):
     if "access_token" in st.session_state:
         del st.session_state.access_token
     st.rerun()
+
+### updated
+uploaded_file = st.file_uploader("Attach a file")
+
+if uploaded_file is not None:
+    if st.button("Upload File"):
+        print("file uploaded")
