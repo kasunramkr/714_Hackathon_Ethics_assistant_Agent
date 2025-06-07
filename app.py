@@ -45,13 +45,13 @@ if "chat_history" not in st.session_state:
 if "access_token" not in st.session_state:
     st.session_state.access_token = get_bearer_token(API_KEY)
 
-mode = st.radio(
-    "",
-    ["Classification","HEDEC", "AHREC"],
-    horizontal=True,
-    index=0
-)
-st.session_state["debug"] = (mode == "AHREC")
+# mode = st.radio(
+#     "",
+#     ["Classification","HEDEC", "AHREC"],
+#     horizontal=True,
+#     index=0
+# )
+# st.session_state["debug"] = (mode == "AHREC")
 
 # App title
 col1, col2 = st.columns([1, 8])  # Adjust width ratios as needed
