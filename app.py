@@ -85,7 +85,7 @@ if user_input:
     st.session_state.chat_history.append({"role": "assistant", "content": response})
 
 # Clear chat button
-if st.button("🧹 Clear Chat"):
+if st.button("🔄 Reset Chat"):
     st.session_state.chat_history = []
     st.session_state.user_input_list = []
     if "access_token" in st.session_state:
